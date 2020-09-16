@@ -25,10 +25,10 @@ namespace readability
             int numberOfWords = 0;
             for (int i = 1; i < text.Length; i++)
             {
-                if (char.IsWhiteSpace(text[i - 1]) == true)
+                if (char.IsWhiteSpace(text[i - 1]) == true)   //find spaces between words 
                 {
-                    if (char.IsLetterOrDigit(text[i]) == true ||
-                        char.IsPunctuation(text[i]))
+                    if (char.IsLetterOrDigit(text[i]) == true ||  // find letters or digits or digits to be considered as a new word   
+                        char.IsPunctuation(text[i]))              // except punctuations wchich should not be considered as a new word 
                     {
                         numberOfWords ++;
                     }
@@ -44,7 +44,7 @@ namespace readability
             for (int i = 1; i < text.Length; i++)
             {
 
-                if (text[i] == '.' || text[i] == '!' || text[i] == '?')
+                if (text[i] == '.' || text[i] == '!' || text[i] == '?')  // we want to count all of punctuation signs as a end of sentence 
 
                     numberOfSentences++;
             }
@@ -53,7 +53,7 @@ namespace readability
             double S =  100*numberOfSentences/numberOfWords;
 
             double index = (0.0588 * L) - (0.296 * S) - 15.8;
-            int grade = Convert.ToInt32(Math.Round(index));
+            int grade = Convert.ToInt32(Math.Round(index));  // round the index to a closest whole integer 
             
             if (grade < 1)
                 Console.Write("Before Grade 1");
